@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Welcome } from "./components/Welcome";
+import { Welcome } from "./pages/Welcome";
 
 function Router() {
   const routes = (

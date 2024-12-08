@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import { css } from "@emotion/react";
 
 const Block = styled(BlockContainer)`
-  background: #f1f1f1;
+  background: ${({ theme }) => theme.colors.background.light};
   /* gap: 0; */
   padding-bottom: 70px;
   padding-top: 40px;

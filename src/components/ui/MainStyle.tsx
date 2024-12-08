@@ -1,3 +1,4 @@
+import { Theme } from "@emotion/react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
@@ -28,10 +29,10 @@ export const Flex = styled("div")(
 );
 
 export const Title = styled("h2")(
-  ({ color }: { color?: string }) => css`
+  ({ color, theme }: { color?: string; theme?: Theme }) => css`
     font-size: 32px;
     font-weight: bold;
-    color: ${color ?? "#14213E"};
+    color: ${color ?? theme?.colors.text.primary};
   `
 );
 

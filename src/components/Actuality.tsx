@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { BlockContainer, Flex } from "./ui/MainStyle";
-import { Button, ButtonVariantEnum } from "./ui/Button";
+import { Button } from "./ui/Button";
 import { useMediaQuery } from "react-responsive";
+import { ButtonVariantEnum } from "./ui/Button.types";
 
 const ActualityCard = styled("div")`
   display: flex;
@@ -9,7 +10,7 @@ const ActualityCard = styled("div")`
   gap: 20px;
   padding: 20px;
   border-radius: 10px;
-  background: #e08a00;
+  background: ${({ theme }) => theme.colors.primary};
 
   @media (min-width: 850px) {
     max-width: 85%;
@@ -17,7 +18,7 @@ const ActualityCard = styled("div")`
 `;
 
 const Title = styled(Flex)`
-  color: #f5f5f5;
+  color: ${({ theme }) => theme.colors.text.light};
   font-size: 32px;
   font-weight: bold;
 `;

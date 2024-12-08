@@ -9,7 +9,7 @@ const HeaderContainer = styled("div")`
   height: 50px;
   position: fixed;
   z-index: 10;
-  background: #3d3d3d;
+  background: ${({ theme }) => theme.colors.background.dark};
   color: white;
   display: flex;
   justify-content: space-between;

@@ -3,8 +3,8 @@ import { BlockContainer, Title } from "./ui/MainStyle";
 import { useMediaQuery } from "react-responsive";
 
 const Block = styled(BlockContainer)`
-  background: #3d3d3d;
-  color: #f5f5f5;
+  background: ${({ theme }) => theme.colors.background.dark};
+  color: ${({ theme }) => theme.colors.text.light};
   position: relative;
   /* gap: 0; */
   padding-bottom: 70px;

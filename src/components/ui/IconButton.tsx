@@ -1,29 +1,28 @@
+import { Theme } from "@emotion/react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { ReactNode } from "react";
 
-export enum IconButtonVariantEnum {
-  DEFAULT = "default",
-  BIG = "big",
-  SIMPLE = "simple",
-}
-
-type IconButtonProps = {
-  children: ReactNode;
-  className?: string;
-  variant?: IconButtonVariantEnum;
-  onClick: () => void;
-};
+import { IconButtonProps, IconButtonVariantEnum } from "./IconButton.types";
 
 const IconButtonContainer = styled("button")(
-  ({ variant }: { variant: IconButtonVariantEnum }) => css`
+  ({
+    variant,
+    theme,
+  }: {
+    variant: IconButtonVariantEnum;
+    theme?: Theme;
+  }) => css`
     border-radius: 50px;
-    padding: 2px;
+    padding: ${variant === IconButtonVariantEnum.BIG ? "10px" : "2px"};
     border: ${variant === IconButtonVariantEnum.DEFAULT
-      ? "1px solid #14213E"
+      ? `1px solid ${theme?.colors.text.primary}`
       : "none"};
-    color: ${variant === IconButtonVariantEnum.BIG ? "#F5F5F5" : "#14213E"};
-    background: ${variant === IconButtonVariantEnum.BIG ? "#E08A00" : "none"};
+    color: ${variant === IconButtonVariantEnum.BIG
+      ? theme?.colors.text.light
+      : theme?.colors.text.primary};
+    background: ${variant === IconButtonVariantEnum.BIG
+      ? theme?.colors.primary
+      : "none"};
     transition: all 0.3s ease-out;
     cursor: pointer;
 
@@ -34,22 +33,22 @@ const IconButtonContainer = styled("button")(
     &:hover {
       color: ${variant === IconButtonVariantEnum.SIMPLE
         ? "#663F00"
-        : "#14213E"};
+        : theme?.colors.text.primary};
       background: ${variant === IconButtonVariantEnum.BIG
-        ? "#FFD899"
+        ? theme?.colors.background.primary
         : variant === IconButtonVariantEnum.DEFAULT
-        ? "#FFE8C2"
+        ? theme?.colors.background.very_light
         : "none"};
     }
 
     &:active {
       color: ${variant === IconButtonVariantEnum.SIMPLE
         ? "#A36500"
-        : "#14213E"};
+        : theme?.colors.text.primary};
       background: ${variant === IconButtonVariantEnum.BIG
-        ? "#FFE8C2"
+        ? theme?.colors.background.very_light
         : variant === IconButtonVariantEnum.DEFAULT
-        ? "#FFD899"
+        ? theme?.colors.background.primary
         : "none"};
     }
   `

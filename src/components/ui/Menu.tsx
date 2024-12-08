@@ -3,6 +3,7 @@ import { Link } from "./Link";
 import styled from "@emotion/styled";
 import { useMediaQuery } from "react-responsive";
 import { css } from "@emotion/react";
+import { Theme } from "@emotion/react";
 
 type MenuProps = {
   label?: string;
@@ -18,14 +19,20 @@ type MenuProps = {
 const MenuContainer = styled("div", {
   shouldForwardProp: (prop) => prop !== "isSmallDropdown",
 })(
-  ({ isSmallDropdown }: { isSmallDropdown: boolean }) => css`
+  ({
+    isSmallDropdown,
+    theme,
+  }: {
+    isSmallDropdown: boolean;
+    theme?: Theme;
+  }) => css`
     margin-top: 15px;
     position: absolute;
     top: 20px;
     right: ${!isSmallDropdown ? 0 : undefined};
     padding: 12px;
     width: max-content;
-    background: #3d3d3d;
+    background: ${theme?.colors.background.dark};
     color: white;
 
     ${!isSmallDropdown
@@ -89,7 +96,7 @@ export const Menu = ({ label, href, menuItems, icon }: MenuProps) => {
           isSmallDropdown={isSmallDropdown}
         >
           {menuItems.map((item) => (
-            <Link {...item} isBig />
+            <Link {...item} isBig={!label} />
           ))}
         </MenuContainer>
       ) : null}

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { ChevronDownIcon } from "../svg/ChevronDownIcon";
 import { css } from "@emotion/react";
+import { Theme } from "@emotion/react";
 
 type LinkProps = {
   label: string;
@@ -13,19 +14,27 @@ type LinkProps = {
 const LinkContainer = styled("a", {
   shouldForwardProp: (prop) => prop !== "isActive",
 })(
-  ({ isActive, isBig }: { isActive?: boolean; isBig?: boolean }) => css`
+  ({
+    theme,
+    isActive,
+    isBig,
+  }: {
+    theme?: Theme;
+    isActive?: boolean;
+    isBig?: boolean;
+  }) => css`
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none; /* no underline */
-    color: ${isActive ? "#e08a00" : "white"};
+    color: ${isActive ? theme?.colors.primary : "white"};
     font-size: ${isBig ? "30px" : "16px"};
     padding: 8px 12px;
 
     transition: color 0.3s ease-out;
 
     &:hover {
-      color: #e08a00;
+      color: ${theme?.colors.primary};
     }
   `
 );

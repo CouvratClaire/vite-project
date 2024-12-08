@@ -1,31 +1,21 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { IconButton, IconButtonVariantEnum } from "./IconButton";
+import { IconButton } from "./IconButton";
 import { ArrowRightIcon } from "../svg/ArrowRightIcon";
-
-export enum VerticalCardEnum {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  TERTIARY = "tertiary",
-}
-
-type VerticalCardProps = {
-  variant: VerticalCardEnum;
-  title: string;
-  subtitle: string;
-  onClick: () => void;
-};
+import { Theme } from "@emotion/react";
+import { VerticalCardEnum, VerticalCardProps } from "./VerticalCard.types";
+import { IconButtonVariantEnum } from "./IconButton.types";
 
 const CardContainer = styled("div")(
-  ({ variant }: { variant: VerticalCardEnum }) => css`
+  ({ variant, theme }: { variant: VerticalCardEnum; theme?: Theme }) => css`
     border-radius: 10px;
     height: 250px;
     max-width: 150px;
     background: ${variant === VerticalCardEnum.PRIMARY
       ? "#FFC870"
       : variant === VerticalCardEnum.SECONDARY
-      ? "#FFD899"
-      : "#FFE8C2"};
+      ? theme?.colors.background.primary
+      : theme?.colors.background.very_light};
     padding: 25px;
     display: flex;
     flex-direction: column;

@@ -1,13 +1,14 @@
 import { BlockContainer, Flex, Title } from "./ui/MainStyle";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { VerticalCard, VerticalCardEnum } from "./ui/VerticalCard";
+import { VerticalCard } from "./ui/VerticalCard";
 import { IconButton } from "./ui/IconButton";
 import { ChevronRightIcon } from "./svg/ChevronRightIcon";
 import styled from "@emotion/styled";
 import { ChevronLeftIcon } from "./svg/ChevronLeftIcon";
 import { Button } from "./ui/Button";
 import { useMediaQuery } from "react-responsive";
+import { VerticalCardEnum } from "./ui/VerticalCard.types";
 
 const responsive = {
   superLargeDesktop: {

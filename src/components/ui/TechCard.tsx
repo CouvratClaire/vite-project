@@ -1,27 +1,14 @@
-import { ReactNode } from "react";
-import { Button, ButtonProps } from "./Button";
+import { Button } from "./Button";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-
-type TechCardProps = {
-  title: string;
-  icon?: ReactNode;
-  description: string;
-  variant?: TechCardVariantEnum;
-  buttonProps?: ButtonProps;
-};
-
-export enum TechCardVariantEnum {
-  DEFAULT = "default",
-  SIMPLE = "simple",
-  WITH_ACTIONS = "withActions",
-}
+import { Theme } from "@emotion/react";
+import { TechCardProps, TechCardVariantEnum } from "./TechCard.types";
 
 const CardContainer = styled("div")(
-  ({ variant }: { variant: TechCardVariantEnum }) => css`
+  ({ variant, theme }: { variant: TechCardVariantEnum; theme?: Theme }) => css`
     display: flex;
     flex-direction: column;
-    color: "#14213E";
+    color: ${theme?.colors.text.primary};
     padding: 20px 25px;
     gap: 20px;
     border-radius: 10px;
@@ -30,8 +17,8 @@ const CardContainer = styled("div")(
     background: ${variant === TechCardVariantEnum.SIMPLE
       ? "white"
       : variant === TechCardVariantEnum.WITH_ACTIONS
-      ? "#FFE8C2"
-      : "#F1F1F1"};
+      ? theme?.colors.background.very_light
+      : theme?.colors.background.light};
 
     font-size: 14px;
   `

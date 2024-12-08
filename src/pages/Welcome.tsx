@@ -9,6 +9,7 @@ import { Research } from "../components/Research";
 import { Actuality } from "../components/Actuality";
 import { Job } from "../components/Job";
 import { Footer } from "../components/Footer";
+import { FloatingChat, FloatingPlatform } from "../components/FloatingActions";
 
 const WelcomeContainer = styled("div")`
   height: 100%;
@@ -16,6 +17,7 @@ const WelcomeContainer = styled("div")`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  /* position: relative; */
 `;
 
 export const Welcome = () => {
@@ -31,6 +33,8 @@ export const Welcome = () => {
         <Job />
       </Flex>
       <Footer />
+      <FloatingChat />
+      <FloatingPlatform />
     </WelcomeContainer>
   );
 };
